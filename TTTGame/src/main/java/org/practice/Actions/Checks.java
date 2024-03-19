@@ -30,14 +30,33 @@ public class Checks {
 
 
     public boolean moveWon(String[][] board, Pair<Integer,Integer> move, Player player){
+        int flag = 0;
         boolean rowWon = false;
+        boolean colWon = false;
 
         for (int cells = 0; cells < board.length; cells++){
            if(board[move.getLeft()][cells] != String.valueOf(player.getPlayerPiece())){
-               return rowWon;
+               flag = 1;
+               break;
            }
         }
-        rowWon = true;
-        return rowWon;
+        if(flag==0){
+            rowWon = true;
+            return rowWon;
+        }
+        flag = 0;
+        for (int cells = 0; cells < board.length; cells++){
+            if(board[cells][move.getRight()] != String.valueOf(player.getPlayerPiece())){
+                flag = 1;
+                break;
+            }
+        }
+        if(flag==0){
+            colWon = true;
+            return colWon;
+        }
+
+
+        return false;
     }
 }
