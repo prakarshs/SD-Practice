@@ -82,7 +82,6 @@ public class Checks {
                 return true;
             }
         }
-
         return false;
     }
 }
