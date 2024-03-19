@@ -2,7 +2,6 @@ package org.practice.Actions;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-
 import org.graalvm.collections.Pair;
 import org.practice.Entities.Player;
 
@@ -10,10 +9,10 @@ import org.practice.Entities.Player;
 @AllArgsConstructor
 public class Checks {
 
-    public boolean emptyCellsLeft(String[][] board){
-        for (int rows = 0; rows < board.length; rows++){
-            for (int cols = 0; cols < board.length; cols++){
-                if(board[rows][cols]=="-"){
+    public boolean emptyCellsLeft(String[][] board) {
+        for (int rows = 0; rows < board.length; rows++) {
+            for (int cols = 0; cols < board.length; cols++) {
+                if (board[rows][cols] == "-") {
                     return true;
                 }
             }
@@ -21,15 +20,14 @@ public class Checks {
         return false;
     }
 
-    public boolean validMove(String[][] board, Pair<Integer,Integer> move){
-        for (int rows = 0; rows < board.length; rows++){
-            for (int cols = 0; cols < board.length; cols++){
-                if(move.getLeft() == rows && move.getRight() == cols){
-                    if(board[rows][cols]!="-"){
+    public boolean validMove(String[][] board, Pair<Integer, Integer> move) {
+        for (int rows = 0; rows < board.length; rows++) {
+            for (int cols = 0; cols < board.length; cols++) {
+                if (move.getLeft() == rows && move.getRight() == cols) {
+                    if (board[rows][cols] != "-") {
                         System.out.println("!! Cell Is Not Empty. Make A Different Move !!");
                         return false;
-                    }
-                    else return true;
+                    } else return true;
                 }
             }
         }
@@ -38,33 +36,52 @@ public class Checks {
     }
 
 
-    public boolean moveWon(String[][] board, Pair<Integer,Integer> move, Player player){
+    public boolean moveWon(String[][] board, Pair<Integer, Integer> move, Player player) {
         int flag = 0;
-        boolean rowWon = false;
-        boolean colWon = false;
 
-        for (int cells = 0; cells < board.length; cells++){
-           if(board[move.getLeft()][cells] != String.valueOf(player.getPlayerPiece())){
-               flag = 1;
-               break;
-           }
-        }
-        if(flag==0){
-            rowWon = true;
-            return rowWon;
-        }
-        flag = 0;
-        for (int cells = 0; cells < board.length; cells++){
-            if(board[cells][move.getRight()] != String.valueOf(player.getPlayerPiece())){
+        for (int cells = 0; cells < board.length; cells++) {
+            if (board[move.getLeft()][cells] != String.valueOf(player.getPlayerPiece())) {
                 flag = 1;
                 break;
             }
         }
-        if(flag==0){
-            colWon = true;
-            return colWon;
+        if (flag == 0) {
+            return true;
         }
-
+        flag = 0;
+        for (int cells = 0; cells < board.length; cells++) {
+            if (board[cells][move.getRight()] != String.valueOf(player.getPlayerPiece())) {
+                flag = 1;
+                break;
+            }
+        }
+        if (flag == 0) {
+            return true;
+        }
+        flag = 0;
+        if (move.getLeft() == move.getRight()) {
+            for (int cells = 0; cells < board.length; cells++) {
+                if (board[cells][cells] != String.valueOf(player.getPlayerPiece())) {
+                    flag = 1;
+                    break;
+                }
+            }
+            if (flag == 0) {
+                return true;
+            }
+        }
+        flag = 0;
+        if (move.getLeft() + move.getRight() + 1 == board.length) {
+            for (int cells = 0, antiCells = board.length - 1; cells < board.length; cells++, antiCells--) {
+                if (board[cells][antiCells] != String.valueOf(player.getPlayerPiece())) {
+                    flag = 1;
+                    break;
+                }
+            }
+            if (flag == 0) {
+                return true;
+            }
+        }
 
         return false;
     }
