@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.graalvm.collections.Pair;
 import org.practice.Actions.Checks;
+import org.practice.Actions.Movements;
 
 import java.util.Deque;
 import java.util.Scanner;
@@ -19,6 +20,8 @@ public class GameSetup {
     private String[][] gameboard;
 
     Checks checks = new Checks();
+    Movements movements = new Movements();
+
     void startGame(){
         boolean won = false;
         Scanner scanner = new Scanner(System.in);
@@ -29,6 +32,7 @@ public class GameSetup {
             Pair<Integer,Integer> move = Pair.create(Integer.valueOf(input[0]),Integer.valueOf(input[1]));
             if(checks.validMove(gameboard,move)){
 
+               movements.makeMove(gameboard,move,player);
 
 
             }

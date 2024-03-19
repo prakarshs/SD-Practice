@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.graalvm.collections.Pair;
+import org.practice.Entities.Player;
 
 @Data
 @AllArgsConstructor
@@ -25,5 +26,18 @@ public class Checks {
         }
         System.out.println("!! Entered Move Is Invalid !!");
         return false;
+    }
+
+
+    public boolean moveWon(String[][] board, Pair<Integer,Integer> move, Player player){
+        boolean rowWon = false;
+
+        for (int cells = 0; cells < board.length; cells++){
+           if(board[move.getLeft()][cells] != String.valueOf(player.getPlayerPiece())){
+               return rowWon;
+           }
+        }
+        rowWon = true;
+        return rowWon;
     }
 }
