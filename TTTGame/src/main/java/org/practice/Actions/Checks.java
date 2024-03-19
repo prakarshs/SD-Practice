@@ -25,13 +25,13 @@ public class Checks {
             for (int cols = 0; cols < board.length; cols++) {
                 if (move.getLeft() == rows && move.getRight() == cols) {
                     if (board[rows][cols] != "-") {
-                        System.out.println("!! Cell Is Not Empty. Make A Different Move !!");
+                        System.out.println("\uD83D\uDEA8 Cell Is Not Empty. Make A Different Move \uD83D\uDEA8");
                         return false;
                     } else return true;
                 }
             }
         }
-        System.out.println("!! Entered Move Is Invalid !!");
+        System.out.println("\uD83D\uDEA8 Entered Move Is Invalid \uD83D\uDEA8");
         return false;
     }
 
