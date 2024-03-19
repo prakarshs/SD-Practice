@@ -33,7 +33,6 @@ public class TTTGame {
                 .players(players)
                 .build();
 
-        gameboard.printBoard(board);
         gameSetup.startGame();
 
     }

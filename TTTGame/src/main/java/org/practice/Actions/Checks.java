@@ -10,6 +10,17 @@ import org.practice.Entities.Player;
 @AllArgsConstructor
 public class Checks {
 
+    public boolean emptyCellsLeft(String[][] board){
+        for (int rows = 0; rows < board.length; rows++){
+            for (int cols = 0; cols < board.length; cols++){
+                if(board[rows][cols]=="-"){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
     public boolean validMove(String[][] board, Pair<Integer,Integer> move){
         for (int rows = 0; rows < board.length; rows++){
             for (int cols = 0; cols < board.length; cols++){
