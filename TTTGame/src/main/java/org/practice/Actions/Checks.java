@@ -9,7 +9,6 @@ import org.graalvm.collections.Pair;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
 public class Checks {
 
     public boolean validMove(String[][] board, Pair<Integer,Integer> move){
