@@ -19,6 +19,7 @@ public class GameSetup {
     private Deque<Player> players;
     private String[][] gameboard;
 
+    Gameboard board = new Gameboard();
     Checks checks = new Checks();
     Movements movements = new Movements();
 
@@ -26,7 +27,7 @@ public class GameSetup {
         boolean won = false;
         Scanner scanner = new Scanner(System.in);
         while (!won){
-            Player player = players.getFirst();
+            Player player = players.poll();
             System.out.println(player.getPlayerName()+"'s turn :");
             String[] input = scanner.nextLine().trim().split(",");
             Pair<Integer,Integer> move = Pair.create(Integer.valueOf(input[0]),Integer.valueOf(input[1]));
@@ -34,7 +35,12 @@ public class GameSetup {
 
                movements.makeMove(gameboard,move,player);
 
-
+               if(checks.moveWon(gameboard,move,player)){
+                   won = true;
+                   System.out.println(player.getPlayerName()+" HAS WON THE GAME !!");
+               }
+               board.printBoard(gameboard);
+               players.offer(player);
             }
             else {
                 players.addFirst(player);
