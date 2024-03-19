@@ -2,12 +2,10 @@ package org.practice.Actions;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import org.graalvm.collections.Pair;
 import org.practice.Entities.Player;
 
 @AllArgsConstructor
-@NoArgsConstructor
 @Data
 public class Movements {
 

@@ -1,15 +1,13 @@
 package org.practice.Actions;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
+
 import org.graalvm.collections.Pair;
 import org.practice.Entities.Player;
 
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
 public class Checks {
 
     public boolean validMove(String[][] board, Pair<Integer,Integer> move){
