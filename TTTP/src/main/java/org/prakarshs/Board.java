@@ -99,4 +99,15 @@ public class Board {
 
         return gboard;
     }
+
+    public boolean boardFull(String[][] gboard) {
+        for(int i=0; i< gboard.length; i++){
+            for(int j=0; j<gboard.length; j++){
+                if(gboard[i][j].equals("-")){
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
 }

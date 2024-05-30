@@ -8,7 +8,7 @@ public class Main {
         Board board = new Board(3);
 
 
-        Player player1 = new Player("Babu",PlayerType.B);
+        Player player1 = new Player("Pari",PlayerType.P);
         Player player2 = new Player("Vasu",PlayerType.V);
         Queue<Player> players = new LinkedList<>();
         players.add(player1);
