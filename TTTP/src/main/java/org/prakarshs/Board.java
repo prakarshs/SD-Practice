@@ -42,4 +42,52 @@ public class Board {
 
         return gboard[rowM][colM].equals("-");
     }
+
+    public boolean hasWon(String[] move,Player player, String[][] gboard) {
+        Integer rowM = Integer.valueOf(move[0]) - 1;
+        Integer colM = Integer.valueOf(move[1]) - 1;
+
+        boolean rowWon = true;
+        boolean colWon = true;
+        boolean ldiaWon = true;
+        boolean rdiaWon = true;
+
+        //checking row victory
+        for (int i = 0; i<gboard.length; i++){
+            if(!gboard[rowM][i].equals(player.getPlayerType().toString())) {
+                rowWon = false;
+                break;
+            }
+        }
+        if(rowWon)return true;
+
+        //checking col victory
+        for (int i = 0; i<gboard.length; i++){
+            if(!gboard[i][colM].equals(player.getPlayerType().toString())) {
+                colWon = false;
+                break;
+            }
+        }
+        if(colWon)return true;
+
+        //checking \dia victory
+        for (int i = 0; i<gboard.length; i++){
+            if(!gboard[i][i].equals(player.getPlayerType().toString())) {
+                ldiaWon = false;
+                break;
+            }
+        }
+        if(ldiaWon)return true;
+
+        //checking /dia victory
+        for (int i = gboard.length - 1; i>=0; i--){
+            if(!gboard[gboard.length - i - 1][i].equals(player.getPlayerType().toString())) {
+                rdiaWon = false;
+                break;
+            }
+        }
+        if(rdiaWon)return true;
+
+        return false;
+    }
 }

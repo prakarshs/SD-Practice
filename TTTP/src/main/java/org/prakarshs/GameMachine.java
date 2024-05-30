@@ -34,7 +34,7 @@ public class GameMachine {
                 System.out.println("You Cant Move An Already Checked Cell. Try With a Move Amongst The Empty Cells.");
                 move = sc.nextLine().trim().split(",");
             }
-            if(board.hasWon(move,gboard)){
+            if(board.hasWon(move,player,gboard)){
                 gboard = board.makeMove(move,gboard);
                 System.out.println(player.getPlayerName()+" Has Won With The Piece "+player.getPlayerType()+" !!");
                 winners.add(player.getPlayerName());
