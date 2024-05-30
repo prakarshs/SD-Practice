@@ -20,8 +20,8 @@ public class TTTGame {
                 .playerPiece(PlayerPiece.V)
                 .build();
         Player player2 = Player.builder()
-                .playerName("Raju")
-                .playerPiece(PlayerPiece.R)
+                .playerName("Pari")
+                .playerPiece(PlayerPiece.P)
                 .build();
 
         Deque<Player> players = new ArrayDeque<>();
