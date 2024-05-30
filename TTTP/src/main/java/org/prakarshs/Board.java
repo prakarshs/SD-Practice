@@ -90,4 +90,13 @@ public class Board {
 
         return false;
     }
+
+    public String[][] makeMove(String[] move, Player player, String[][] gboard) {
+        Integer rowM = Integer.valueOf(move[0]) - 1;
+        Integer colM = Integer.valueOf(move[1]) - 1;
+
+        gboard[rowM][colM] = player.getPlayerType().toString();
+
+        return gboard;
+    }
 }

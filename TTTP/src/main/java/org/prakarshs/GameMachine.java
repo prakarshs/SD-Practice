@@ -34,18 +34,21 @@ public class GameMachine {
                 System.out.println("You Cant Move An Already Checked Cell. Try With a Move Amongst The Empty Cells.");
                 move = sc.nextLine().trim().split(",");
             }
+            gboard = board.makeMove(move,player,gboard);
             if(board.hasWon(move,player,gboard)){
-                gboard = board.makeMove(move,gboard);
+                gboard = board.makeMove(move,player,gboard);
                 System.out.println(player.getPlayerName()+" Has Won With The Piece "+player.getPlayerType()+" !!");
                 winners.add(player.getPlayerName());
                 board.print(gboard);
             }
             else{
-                gboard = board.makeMove(move,gboard);
-                board.print(gboard);
                 playerList.add(player);
             }
-
+        }
+        Integer pos = 1;
+        for (var i : winners){
+            System.out.println(i +" Is At Position : "+pos+" !!");
+            pos++;
         }
     }
 }
